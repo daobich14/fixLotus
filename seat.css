@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap");
+
+/* ================= ROOT ================= */
+:root {
+  --seat-size: 40px;
+  --gap: 8px;
+  --row-number-w: 30px;
+
+  --primary-color: #d0e1f9;
+  --primary-color-dark: #283655;
+  --extra-light: #f3f4f6;
+
+  --header-color: #e9effdff;
+
+  --seat-available: #cfe2ff;
+  --seat-booked: #f6b3c8;
+  --seat-selected: #f2e85f;
+}
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--extra-light);
+  font-family: "Noto Serif", sans-serif;
+  color: var(--primary-color-dark);
+  text-align: center;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+
+  background: var(--header-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 36px;
+  transform: scale(1.4);
+}
+
+.logo span {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color-dark);
+}
+
+.page-content {
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 10px; */
+  gap: 10px;
+}
+
+/* ================= TITLE ================= */
+h1 {
+  background: var(--primary-color-dark);
+  color: #fff;
+
+  padding: 20px 32px;
+  border-radius: 14px;
+  font-size: 1.5rem;
+}
+
+/* ================= FLIGHT INFO ================= */
+.page-content>p {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+
+#seat-map.plane {
+  background: #0d47a1;
+  border-radius: 120px / 60px;
+  padding: 24px 20px;
+  width: 450px;
+  /* color: #0c2a50; */
+  /* border: 2px solid #0c2a50; */
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+}
+
+
+.plane-nose,
+.plane-tail {
+  width: 90%;               /* giảm từ 100% xuống 70% */
+  height: 56px;             /* chiều cao nhỏ hơn */
+  border-radius: 14px;
+
+  background: linear-gradient(180deg, #ffffff, #f3f7ff);
+  padding: 4px 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  font-size: 16px;
+
+  border: 2px solid #0c2a50;
+  margin: 8px auto 0 auto;  /* căn giữa ngang */
+}
+
+
+
+.cabin {
+  width: 100%;
+  background: #0d47a1;
+  border-radius: 18px;
+  padding: 14px 12px 18px;
+
+  /* box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6); */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ================= ROW ================= */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  margin: 6px 0;
+}
+
+.row-number {
+  width: var(--row-number-w);
+  text-align: right;
+  font-weight: bold;
+  color: var(--extra-light);
+  margin-right: 6px;
+}
+
+.seat-group {
+  display: flex;
+  gap: var(--gap);
+}
+
+.seat {
+  width: var(--seat-size);
+  height: var(--seat-size);
+  line-height: var(--seat-size);
+
+  background-color: var(--seat-available);
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+
+  /* border: 2px solid #0c2a50; */
+  transition: 0.3s ease;
+}
+
+/* Khoảng trống giữa dãy C và D */
+.seat-group .seat:nth-child(3) {
+  margin-right: 20px; /* khoảng trống giữa C và D */
+}
+
+.seat.available {
+  background: var(--seat-available);
+}
+
+.seat.available:hover {
+  background: #ffffff;
+}
+
+.seat.booked {
+  background: var(--seat-booked);
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.seat.selected {
+  background: var(--seat-selected);
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* ================= NOTE ================= */
+.note {
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ================= CONTROLS ================= */
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  padding: 10px 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: "Noto Serif", sans-serif;
+  border: 2px solid #0c2a50;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--primary-color);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 520px) {
+  :root {
+    --seat-size: 34px;
+    --gap: 6px;
+  }
+
+  #seat-map.plane {
+    width: 95%;
+  }
+}
+
+/* ================= FLIGHT INFO CARD ================= */
+.flight-info {
+  margin-top: -20px;
+  margin-bottom: 12px;
+
+  padding: 14px 20px;
+  max-width: 520px;
+  width: 90%;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+
+  border-radius: 14px;
+  border: 2px solid #0c2a50;
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--primary-color-dark);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.seat-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px; /* tăng gap giữa 2 nút */
+  margin-top: 20px;
+  flex-wrap: nowrap; /* không xuống dòng */
+}
+
+.seat-controls button {
+  flex: 1;
+  min-width: 180px; /* tăng min-width để text không xuống dòng */
+  padding: 12px 30px; /* tăng padding ngang */
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Noto Serif", serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+
+
+/* Nút Quay lại giống btn-pass-back */
+.seat-controls button:first-child {
+  background: var(--extra-light);
+  color: var(--text-dark);
+  border: 2px solid var(--primary-color-dark);
+}
+
+.seat-controls button:first-child:hover {
+  background-color: #f0f2f8; /* hover nhẹ */
+  color: var(--text-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Nút Xác nhận giống btn-pass-next */
+.seat-controls button:last-child {
+  background-color: var(--primary-color-dark);
+  color: var(--white);
+}
+
+.seat-controls button:last-child:hover,
+.seat-controls button:last-child:active {
+  background-color: var(--primary-color); /* hover màu xanh da trời */
+  color: var(--text-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+}
+
+/* Bỏ trạng thái disabled */
+.seat-controls button:disabled {
+  opacity: 1; /* vẫn sáng bình thường */
+  cursor: pointer; /* vẫn hover được */
+  background: inherit;
+  color: inherit;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive: màn hình nhỏ, 2 nút xếp dọc */
+@media (max-width: 500px) {
+  .seat-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
