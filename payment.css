@@ -1,0 +1,82 @@
+.payment-page {
+  max-width: 800px;
+  margin: 100px auto 50px auto; /* căn giữa và tạo khoảng cho header */
+  padding: 20px;
+  font-family: "Noto Serif", serif;
+  color: var(--text-dark);
+  background: var(--extra-light);
+}
+
+/* Tiêu đề */
+.payment-page h2 {
+  width: 100%;
+  background-color: var(--primary-color-dark);
+  color: var(--extra-light);
+  padding: 25px;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 1.4rem;
+  margin-bottom: 35px;
+}
+
+/* Các thông tin thanh toán */
+.payment-page p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 1rem;
+}
+
+.payment-page p strong {
+  font-weight: 600;
+}
+
+/* Container nút chung cho tất cả các button */
+.payment-buttons {
+  display: flex;
+  justify-content: center; /* căn giữa nút */
+  gap: 20px;               /* khoảng cách giữa các nút */
+  flex-wrap: wrap;          /* xuống dòng nếu màn hình nhỏ */
+  margin-top: 20px;
+}
+
+/* Nút button chung */
+.payment-page button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  font-family: "Noto Serif", serif;
+  cursor: pointer;
+  border: none;
+  background: var(--primary-color-dark);
+  color: var(--white);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.payment-page button:hover:not(:disabled),
+.payment-page button:active:not(:disabled) {
+  background-color: #1e90ff;
+  color: var(--text-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.payment-page button:disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Success section (các nút nằm ngang, căn giữa) */
+.payment-page .success {
+  text-align: center;
+}
+
+.payment-page .success .payment-buttons {
+  justify-content: center;
+  margin-top: 20px;
+}
